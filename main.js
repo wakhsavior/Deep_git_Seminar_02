@@ -49,12 +49,19 @@
         });
 
         textArea.addEventListener('keyup', function(){
-            changeButtonsStatus(textArea.value.length > 0);
+            if (textArea.value.length > 0) {
+                countButton.removeAttribute('disabled');
+                resetButton.removeAttribute('disabled');
+            } else {
+                countButton.setAttribute('disabled', 'disabled');
+                resetButton.setAttribute('disabled', 'disabled');
+            }
         });
 
         resetButton.addEventListener('click', function(){
             textArea.value = '';
-            changeButtonsStatus(false);
+            resetButton.setAttribute('disabled', 'disabled');
+            countButton.setAttribute('disabled', 'disabled');
         });
     });
 }());

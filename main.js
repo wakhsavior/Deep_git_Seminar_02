@@ -34,11 +34,9 @@
 
     document.addEventListener('DOMContentLoaded', function(){
         let textArea = document.querySelector('#text');
+        let button = document.querySelector('#count-button');
         let result = document.querySelector('#result');
-        let countButton = document.querySelector('#count-button');
-        let resetButton = document.querySelector('#reset-button');
-
-        countButton.addEventListener('click', function(){
+        button.addEventListener('click', function(){
             let text = textArea.value;
             let wordsCount = countWords(text);
             let withoutSpaces = text.length - countSpaces(text);
@@ -51,17 +49,13 @@
         textArea.addEventListener('keyup', function(){
             if (textArea.value.length > 0) {
                 countButton.removeAttribute('disabled');
-                resetButton.removeAttribute('disabled');
             } else {
                 countButton.setAttribute('disabled', 'disabled');
-                resetButton.setAttribute('disabled', 'disabled');
             }
         });
 
         resetButton.addEventListener('click', function(){
             textArea.value = '';
-            resetButton.setAttribute('disabled', 'disabled');
-            countButton.setAttribute('disabled', 'disabled');
         });
     });
 }());
